@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Amiri", serif;
+
+  --color-burgundy: #3A2E26;
+  --color-deep-burgundy: #D8C29D;
+  --color-gold: #B89E79;
+  --color-champagne: #EBE0CD;
+  --color-ivory: #FAF5EF;
+  --color-warm-white: #FFFFFF;
+  --color-background: #FAF5EF;
+  --color-foreground: #382D26;
+}
+
+:root {
+  --burgundy: #3A2E26;
+  --deep-burgundy: #D8C29D;
+  --gold: #B89E79;
+  --champagne: #EBE0CD;
+  --ivory: #FAF5EF;
+  --warm-white: #FFFFFF;
+  --background: #FAF5EF;
+  --foreground: #382D26;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--gold);
+  color: #FFFFFF;
+}
+
+.bg-beige-gold-section {
+  background-color: #ECDCB9;
+  background-image: radial-gradient(circle at 50% 30%, #FAF1DC 0%, #E3CEA7 55%, #CCA87B 100%);
+}
+
+.paper-texture {
+  background-color: var(--ivory);
+  background-image: radial-gradient(circle at 50% 0, #b89e7914, #0000 60%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23b89e79' stroke-opacity='0.08'%3E%3Cpath d='M60 0c16 22 44 22 60 0M60 120c16-22 44-22 60 0M0 60c22-16 22-44 0-60M120 60c-22-16-22-44 0-60'/%3E%3Ccircle cx='60' cy='60' r='30'/%3E%3Ccircle cx='60' cy='60' r='16'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100% 100%, 120px 120px;
+}
+
+.arabesque {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%233a2e26' stroke-opacity='0.06'%3E%3Cpath d='M40 8c8 12 24 12 32 0M40 72c8-12 24-12 32 0M8 40c12-8 12-24 0-32M72 40c-12-8-12-24 0-32'/%3E%3Ccircle cx='40' cy='40' r='18'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+.blend-floral {
+  mix-blend-mode: multiply;
+}
+
+.reveal {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1), transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(28px);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes petal-fall {
+  0% {
+    opacity: 0;
+    transform: translateY(-10vh) translate(0) rotate(0);
+  }
+  10% {
+    opacity: var(--petal-opacity, 0.7);
+  }
+  90% {
+    opacity: var(--petal-opacity, 0.7);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(105vh) translate(var(--petal-drift, 80px)) rotate(720deg);
+  }
+}
+
+.petal {
+  background: linear-gradient(135deg, #d4c3a3, #b89e79);
+  border-radius: 65% 5%;
+  animation-name: petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  position: absolute;
+  top: 0;
+}
